@@ -19,23 +19,26 @@ const knex = require('../knex');
 //     console.error(err);
 //   });
 
-let id = 1002;
-knex
-  .select('notes.id', 'title', 'content')
-  .from('notes')
-  .where('notes.id', `${id}`)
-  .then(results => {
-    console.log(JSON.stringify(results[0], null, 2));
-  })
-  .catch(err => {
-    console.error(err);
-  });
+// let id = 1002;
+// knex
+//   .select('notes.id', 'title', 'content')
+//   .from('notes')
+//   .where('notes.id', `${id}`)
+//   .then(results => {
+//     console.log(JSON.stringify(results[0], null, 2));
+//   })
+//   .catch(err => {
+//     console.error(err);
+//   });
 
+// let updateID = 1007;
 // let updateObj = {id: 1007, title: 'foo', content: 'bar'};
+// let updateObj = {id: '1007', title: 'foo', content: 'bar'};
 // knex
 //   // .select('notes.id', 'title', 'content')
 //   .from('notes')
-//   .where('notes.id', `${updateObj.id}`)
+//   .where('notes.id', updateObj.id)
+//   // .update(updateObj)
 //   .update({
 //     title: `${updateObj.title}`,
 //     content: `${updateObj.content}`
