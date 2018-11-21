@@ -26,7 +26,7 @@ router.get('/', (req, res, next) => {
         queryBuilder.where('title', 'like', `%${searchTerm}%`);
       }
     })
-    .orderBy('notes.id')
+    .orderBy('id')
     .then(results => {
       res.json(results);
     })
@@ -47,9 +47,9 @@ router.get('/:id', (req, res, next) => {
   const id = req.params.id;
 
   knex
-    .select('notes.id', 'title', 'content')
+    .select('id', 'title', 'content')
     .from('notes')
-    .where('notes.id', id)
+    .where('id', id)
     .then(results => {
       // console.log(results);
       if (results.length !== 0) {
@@ -97,13 +97,13 @@ router.put('/:id', (req, res, next) => {
   knex
   // .select('notes.id', 'title', 'content')
     .from('notes')
-    .where('notes.id', id)
+    .where('id', id)
     .update(updateObj)
     // .update({
     //   title: `${updateObj.title}`,
     //   content: `${updateObj.content}`
     // })
-    .returning(['notes.id', 'title', 'content'])
+    .returning(['id', 'title', 'content'])
     .then(results => {
       if(results) {
         res.json(results[0]);
